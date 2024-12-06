@@ -17,8 +17,7 @@ func exit() -> void:
 	pass
 
 func process(_delta: float) -> void:
-	if Input.get_axis("ui_left", "ui_right"):
-		emit_signal("change_state", StateWalk.instance)
+	pass
 
 func physics_process(_delta: float) -> void:
 	pass

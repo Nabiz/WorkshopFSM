@@ -16,9 +16,3 @@ func _process(delta: float) -> void:
 
 func _physics_process(delta: float) -> void:
 	current_state.physics_process(delta)
-
-func on_change_state(target_state: State) -> void:
-	current_state.exit()
-	current_state = target_state
-	player.change_label_text(current_state.name)
-	current_state.enter()
