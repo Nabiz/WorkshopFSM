@@ -1,4 +1,4 @@
-[gd_scene load_steps=39 format=3 uid="uid://cncb2xx1p1njp"]
+[gd_scene load_steps=37 format=3 uid="uid://cncb2xx1p1njp"]
 
 [ext_resource type="Texture2D" uid="uid://bmtavbwjwtikg" path="res://Assets/PlayerSpriteSheets/Idle.png" id="1_1fkjk"]
 [ext_resource type="Script" path="res://Player/Player.gd" id="1_sl7xq"]
@@ -8,8 +8,6 @@
 [ext_resource type="Script" path="res://Player/FSM/PlayerStateMachine.gd" id="3_v2273"]
 [ext_resource type="Texture2D" uid="uid://cc7nw2ilb6qq" path="res://Assets/PlayerSpriteSheets/Jump.png" id="4_q8kvp"]
 [ext_resource type="Script" path="res://Player/FSM/StateWalk.gd" id="5_07yyk"]
-[ext_resource type="Script" path="res://Player/FSM/StateFall.gd" id="7_j30nu"]
-[ext_resource type="Script" path="res://Player/FSM/StateJump.gd" id="9_p1p6l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_tgbk3"]
 size = Vector2(36, 72)
@@ -242,7 +240,7 @@ offset_bottom = 23.0
 [node name="PlayerStateMachine" type="Node" parent="." node_paths=PackedStringArray("player", "current_state")]
 script = ExtResource("3_v2273")
 player = NodePath("..")
-current_state = NodePath("StateFall")
+current_state = NodePath("StateIdle")
 
 [node name="StateIdle" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("3_u8b7i")
@@ -250,13 +248,5 @@ script = ExtResource("3_u8b7i")
 [node name="StateWalk" type="Node" parent="PlayerStateMachine"]
 script = ExtResource("5_07yyk")
 
-[node name="StateFall" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("7_j30nu")
-
-[node name="StateJump" type="Node" parent="PlayerStateMachine"]
-script = ExtResource("9_p1p6l")
-
 [connection signal="change_state" from="PlayerStateMachine/StateIdle" to="PlayerStateMachine" method="on_change_state"]
 [connection signal="change_state" from="PlayerStateMachine/StateWalk" to="PlayerStateMachine" method="on_change_state"]
-[connection signal="change_state" from="PlayerStateMachine/StateFall" to="PlayerStateMachine" method="on_change_state"]
-[connection signal="change_state" from="PlayerStateMachine/StateJump" to="PlayerStateMachine" method="on_change_state"]

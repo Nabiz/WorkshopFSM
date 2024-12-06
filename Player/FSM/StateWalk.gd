@@ -8,9 +8,8 @@ static var instance: State
 func _enter_tree() -> void:
 	instance = self
 
-func handle_input(event: InputEvent) -> void:
-	if event.is_action_pressed("ui_select"):
-		emit_signal("change_state", StateJump.instance)
+func handle_input(_event: InputEvent) -> void:
+	pass
 
 func enter() -> void:
 	player.animation.play("Walk")
@@ -19,8 +18,7 @@ func exit() -> void:
 	pass
 
 func process(_delta: float) -> void:
-	if !player.is_on_floor():
-		emit_signal("change_state", StateFall.instance)
+	pass
 
 func physics_process(_delta: float) -> void:
 	var direction := Input.get_axis("ui_left", "ui_right")
